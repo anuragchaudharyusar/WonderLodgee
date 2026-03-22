@@ -26,12 +26,13 @@ router.post("/register", upload.single("profileImage"), async (req, res) => {
     /* The uploaded file is available as req.file */
     const profileImage = req.file;
 
-    if (!profileImage) {
-      return res.status(400).send("No file uploaded");
-    }
+    // if (!profileImage) {
+    //   return res.status(400).send("No file uploaded");
+    // }
 
     /* path to the uploaded profile photo */
-    const profileImagePath = profileImage.path;
+    // const profileImagePath = profileImage.path;
+    const profileImagePath = profileImage ? profileImage.path : "";
 
     /* Check if user exists */
     const existingUser = await User.findOne({ email });
@@ -54,6 +55,7 @@ router.post("/register", upload.single("profileImage"), async (req, res) => {
 
     /* Save the new User */
     await newUser.save();
+    // console.log("new user", newUser);
 
     /* Send a successful message */
     res

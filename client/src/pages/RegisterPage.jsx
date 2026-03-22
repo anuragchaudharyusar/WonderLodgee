@@ -37,6 +37,7 @@ const RegisterPage = () => {
 
       for (var key in formData) {
         register_form.append(key, formData[key])
+        // console.log("Form Data:", formData);
       }
 
       const response = await fetch("http://localhost:3001/auth/register", {
@@ -106,7 +107,7 @@ const RegisterPage = () => {
             accept="image/*"
             style={{ display: "none" }}
             onChange={handleChange}
-            required
+            // required
           />
           <label htmlFor="image">
             <img src="/assets/addImage.png" alt="add profile photo" />
